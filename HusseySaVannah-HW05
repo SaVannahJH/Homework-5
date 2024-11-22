@@ -58,15 +58,11 @@ def generate_pixel_art():
     ]
 
     
- # Flip x, y to y, x here
-    flipped_pixel_data = [(y, x, color) for x, y, color in pixel_data]
-
-    # Loop through flipped data
-    for x, y, color in flipped_pixel_data:
+    for x, y, color in pixel_data:
         fill_pixel(sheet, x, y, color)
 
     # Saving the workbook to a file
-    wb.save("rose_pixel_art_corrected.xlsx")
+    wb.save("heart_pixel_art_.xlsx")
 
 generate_pixel_art()
 
