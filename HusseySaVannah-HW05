@@ -4,6 +4,58 @@
 #
 #
 
-#Explain assignment here:
+#Explain assignment here:pip install openpyxl
 
-Code here:
+import openpyxl
+from openpyxl.styles import PatternFill
+
+# Function to set the dimensions of the cells to make them square
+def set_square_cells(sheet):
+    # Set column width (0-255)
+    column_width = 3  # Arbitrary choice for column width
+    # Set row height (0-409)
+    row_height = 18  # Based on the formula row height = 6 * column width
+
+    # Apply column width and row height to all cells
+    for col in range(1, 101):  # 100 columns for the grid
+        sheet.column_dimensions[openpyxl.utils.get_column_letter(col)].width = column_width
+    for row in range(1, 101):  # 100 rows for the grid
+        sheet.row_dimensions[row].height = row_height
+
+# Function to fill cells with specific colors
+def fill_pixel(sheet, x, y, color):
+    cell = sheet.cell(row=y, column=x)
+    fill = PatternFill(start_color=color[0:6], end_color=color[0:6], fill_type="solid")
+    cell.fill = fill
+
+# Function to generate pixel art
+def generate_pixel_art():
+    # Create a new workbook and select the active sheet
+    wb = openpyxl.Workbook()
+    sheet = wb.active
+
+    # Set the cells to be square-shaped
+    set_square_cells(sheet)
+
+    # Define the pixel art (this is a sample 10x10 grid with 5 colors)
+    # Each cell is represented by a tuple: (x, y, color)
+    # Color codes are in RGB hex format (without '#')
+    pixel_data = [
+        (1, 1, "FF0000"), (2, 1, "FF0000"), (3, 1, "FF0000"),
+        (1, 2, "00FF00"), (2, 2, "00FF00"), (3, 2, "00FF00"),
+        (1, 3, "0000FF"), (2, 3, "0000FF"), (3, 3, "0000FF"),
+        (1, 4, "FFFF00"), (2, 4, "FFFF00"), (3, 4, "FFFF00"),
+        (1, 5, "FF00FF"), (2, 5, "FF00FF"), (3, 5, "FF00FF"),
+        (4, 1, "000000"), (4, 2, "000000"), (4, 3, "000000"),
+        (4, 4, "FFFFFF"), (4, 5, "FFFFFF")
+    ]
+
+    # Fill the cells based on the pixel data
+    for x, y, color in pixel_data:
+        fill_pixel(sheet, x, y, color)
+
+    # Save the workbook to a file
+    wb.save("pixel_art.xlsx")
+
+# Run the function to generate the pixel art
+generate_pixel_art()
