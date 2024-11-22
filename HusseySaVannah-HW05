@@ -5,7 +5,7 @@
 #
 #
 
-# A program that generates pixel art of a rose 
+# A program that generates pixel art of a emoji 
 
 # 1st step: insert "pip install openpyxl" into the terminal
 # Run code:
@@ -32,7 +32,7 @@ def fill_pixel(sheet, x, y, color):
     fill = PatternFill(start_color=color[0:6], end_color=color[0:6], fill_type="solid")
     cell.fill = fill
 
-# Function to generate rose pixel art
+# Function to generate happy face emoji pixel art
 def generate_pixel_art():
     # Create a new workbook and select the active sheet
     wb = openpyxl.Workbook()
@@ -41,30 +41,25 @@ def generate_pixel_art():
     # Set the cells to be square-shaped
     set_square_cells(sheet)
 
-    # Define the pixel art for the rose (simple representation)
+    # Define the pixel art for the happy face emoji (simple representation)
     # Each cell is represented by a tuple: (x, y, color)
     # Color codes are in RGB hex format (without '#')
     pixel_data = [
-        # Rose petals (red)
-        (50, 50, "FF0000"), (51, 50, "FF0000"), (49, 50, "FF0000"),  # Red petals in the center
-        (50, 51, "FF0000"), (51, 51, "FF0000"), (49, 51, "FF0000"),
-        (52, 50, "FF0000"), (52, 51, "FF0000"), (53, 50, "FF0000"), (53, 51, "FF0000"),
-        (48, 50, "FF0000"), (48, 51, "FF0000"), (47, 50, "FF0000"), (47, 51, "FF0000"),
+        # Yellow face (background)
+        (50, 50, "FFFF00"), (51, 50, "FFFF00"), (52, 50, "FFFF00"),
+        (49, 51, "FFFF00"), (50, 51, "FFFF00"), (51, 51, "FFFF00"), (52, 51, "FFFF00"), (53, 51, "FFFF00"),
+        (48, 52, "FFFF00"), (49, 52, "FFFF00"), (50, 52, "FFFF00"), (51, 52, "FFFF00"), (52, 52, "FFFF00"), (53, 52, "FFFF00"), (54, 52, "FFFF00"),
+        (48, 53, "FFFF00"), (49, 53, "FFFF00"), (50, 53, "FFFF00"), (51, 53, "FFFF00"), (52, 53, "FFFF00"), (53, 53, "FFFF00"), (54, 53, "FFFF00"),
+        (48, 54, "FFFF00"), (49, 54, "FFFF00"), (50, 54, "FFFF00"), (51, 54, "FFFF00"), (52, 54, "FFFF00"), (53, 54, "FFFF00"), (54, 54, "FFFF00"),
         
-        # Additional petals (expand outwards)
-        (49, 52, "FF0000"), (51, 52, "FF0000"), (50, 53, "FF0000"),
-        (50, 49, "FF0000"), (51, 49, "FF0000"), (49, 49, "FF0000"),
+        # Eyes (black)
+        (50, 48, "000000"), (52, 48, "000000"), # Two eyes
+        (50, 49, "000000"), (52, 49, "000000"),
         
-        # Stem (green)
-        (50, 54, "008000"), (51, 54, "008000"), (52, 54, "008000"), (53, 54, "008000"),
-        (50, 55, "008000"), (51, 55, "008000"), (52, 55, "008000"), (53, 55, "008000"),
-        (50, 56, "008000"), (51, 56, "008000"), (52, 56, "008000"), (53, 56, "008000"),
-        
-        # White highlight on petals
-        (50, 50, "FFFFFF"), (51, 50, "FFFFFF"), (50, 51, "FFFFFF"),
-        
-        # Black outline
-        (48, 49, "000000"), (48, 52, "000000"), (52, 49, "000000"), (52, 52, "000000")
+        # Smile (black)
+        (49, 55, "000000"), (50, 55, "000000"), (51, 55, "000000"), (52, 55, "000000"), (53, 55, "000000"),
+        (49, 56, "000000"), (53, 56, "000000"),
+        (49, 57, "000000"), (53, 57, "000000")
     ]
 
     # Fill the cells based on the pixel data
@@ -72,8 +67,8 @@ def generate_pixel_art():
         fill_pixel(sheet, x, y, color)
 
     # Save the workbook to a file
-    wb.save("rose_pixel_art.xlsx")
+    wb.save("happy_face_emoji.xlsx")
 
-# Run the function to generate the rose pixel art
+# Run the function to generate the happy face emoji pixel art
 generate_pixel_art()
 
