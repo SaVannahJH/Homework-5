@@ -46,13 +46,10 @@ def generate_pixel_art():
     # Color codes are in RGB hex format (without '#')
     pixel_data = [
         # Inside the heart (using red)
-        (3, 4, "FF0000"), (4, 3, "FF0000"), (5, 3, "FF0000"), (6, 3, "FF0000"), (7, 4, "FF0000"), 
-        (8, 5, "FF0000"), (9, 6, "FF0000"), (3, 5, "FF0000"), (4, 4, "FF0000"), (5, 4, "FF0000"),
-        (6, 4, "FF0000"), (7, 5, "FF0000"), (8, 6, "FF0000"), (3, 7, "FF0000"), (4, 5, "FF0000"),
-        (5, 5, "FF0000"), (6, 5, "FF0000"), (7, 6, "FF0000"), (8, 7, "FF0000"), (3, 8, "FF0000"),
-        (4, 6, "FF0000"), (5, 6, "FF0000"), (6, 6, "FF0000"), (7, 7, "FF0000"), (4, 7, "FF0000"),
-        (5, 7, "FF0000"), (6, 7, "FF0000"), (7, 8, "FF0000"), (4, 8, "FF0000"), (5, 8, "FF0000"),
-        (6, 8, "FF0000"), (4, 9, "FF0000"), (5, 9, "FF0000"), (6, 9, "FF0000"),
+        (4, 3, "FF0000"), (3, 4, "FF0000"), (3, 5, "FF0000"), (3, 6, "FF0000"), (4, 6, "FF0000"),
+        (5, 6, "FF0000"), (6, 5, "FF0000"), (6, 4, "FF0000"), (5, 3, "FF0000"), (6, 3, "FF0000"),
+        (7, 3, "FF0000"), (7, 4, "FF0000"), (7, 5, "FF0000"), (7, 6, "FF0000"), (8, 5, "FF0000"),
+        (8, 6, "FF0000"), (9, 6, "FF0000"), (9, 7, "FF0000"), (8, 7, "FF0000"), (9, 8, "FF0000"),
 
         # Black outline (for the heart shape)
         (2, 4, "000000"), (3, 3, "000000"), (4, 2, "000000"), (5, 2, "000000"), (6, 2, "000000"), 
@@ -66,7 +63,7 @@ def generate_pixel_art():
         fill_pixel(sheet, x, y, color)
 
     # Save the workbook to a file
-    wb.save("rose_pixel_art_shifted.xlsx")
+    wb.save("rose_pixel_art_corrected.xlsx")
 
 # Run the function to generate the rose pixel art
 generate_pixel_art()
