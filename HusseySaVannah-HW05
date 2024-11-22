@@ -21,9 +21,9 @@ def set_square_cells(sheet):
     row_height = 18  # Based on the formula row height = 6 * column width
 
     # Apply column width and row height to all cells
-    for col in range(1, 101):  # 100 columns for the grid
+    for col in range(2, 7):  # Restricting to columns B-F (2-6)
         sheet.column_dimensions[openpyxl.utils.get_column_letter(col)].width = column_width
-    for row in range(1, 101):  # 100 rows for the grid
+    for row in range(2, 12):  # Restricting to rows 2-11 (shifted down by 1 row)
         sheet.row_dimensions[row].height = row_height
 
 # Function to fill cells with specific colors
@@ -32,7 +32,7 @@ def fill_pixel(sheet, x, y, color):
     fill = PatternFill(start_color=color[0:6], end_color=color[0:6], fill_type="solid")
     cell.fill = fill
 
-# Function to generate rose pixel art
+# Function to generate rose pixel art (shifted by 1 row and 1 column)
 def generate_pixel_art():
     # Create a new workbook and select the active sheet
     wb = openpyxl.Workbook()
@@ -41,30 +41,36 @@ def generate_pixel_art():
     # Set the cells to be square-shaped
     set_square_cells(sheet)
 
-    # Define the pixel art for the rose (simple representation)
+    # Define the pixel art for the rose (simple representation, shifted by 1 row and 1 column)
     # Each cell is represented by a tuple: (x, y, color)
     # Color codes are in RGB hex format (without '#')
     pixel_data = [
-        # Rose petals (red)
-        (50, 50, "FF0000"), (51, 50, "FF0000"), (49, 50, "FF0000"),  # Red petals in the center
-        (50, 51, "FF0000"), (51, 51, "FF0000"), (49, 51, "FF0000"),
-        (52, 50, "FF0000"), (52, 51, "FF0000"), (53, 50, "FF0000"), (53, 51, "FF0000"),
-        (48, 50, "FF0000"), (48, 51, "FF0000"), (47, 50, "FF0000"), (47, 51, "FF0000"),
-        
-        # Additional petals (expand outwards)
-        (49, 52, "FF0000"), (51, 52, "FF0000"), (50, 53, "FF0000"),
-        (50, 49, "FF0000"), (51, 49, "FF0000"), (49, 49, "FF0000"),
-        
-        # Stem (green)
-        (50, 54, "008000"), (51, 54, "008000"), (52, 54, "008000"), (53, 54, "008000"),
-        (50, 55, "008000"), (51, 55, "008000"), (52, 55, "008000"), (53, 55, "008000"),
-        (50, 56, "008000"), (51, 56, "008000"), (52, 56, "008000"), (53, 56, "008000"),
-        
-        # White highlight on petals
-        (50, 50, "FFFFFF"), (51, 50, "FFFFFF"), (50, 51, "FFFFFF"),
-        
-        # Black outline
-        (48, 49, "000000"), (48, 52, "000000"), (52, 49, "000000"), (52, 52, "000000")
+        # Red petals (no leaves, just red petals with red highlights)
+        (2, 2, "FF0000"), (3, 2, "FF0000"), (4, 2, "FF0000"),
+        (2, 3, "FF0000"), (3, 3, "FF0000"), (4, 3, "FF0000"),
+        (2, 4, "FF0000"), (3, 4, "FF0000"), (4, 4, "FF0000"),
+        (2, 5, "FF0000"), (3, 5, "FF0000"), (4, 5, "FF0000"),
+        (2, 6, "FF0000"), (3, 6, "FF0000"), (4, 6, "FF0000"),
+        (2, 7, "FF0000"), (3, 7, "FF0000"), (4, 7, "FF0000"),
+        (2, 8, "FF0000"), (3, 8, "FF0000"), (4, 8, "FF0000"),
+        (2, 9, "FF0000"), (3, 9, "FF0000"), (4, 9, "FF0000"),
+        (2, 10, "FF0000"), (3, 10, "FF0000"), (4, 10, "FF0000"),
+
+        # Red highlights (same red as the petals)
+        (3, 2, "FF0000"), (4, 2, "FF0000"), (3, 3, "FF0000"),
+        (3, 4, "FF0000"), (4, 3, "FF0000"), (2, 3, "FF0000"),
+        (2, 4, "FF0000"),
+
+        # Black outline for petals (optional but for structure)
+        (1, 2, "000000"), (5, 2, "000000"), 
+        (1, 3, "000000"), (5, 3, "000000"),
+        (1, 4, "000000"), (5, 4, "000000"),
+        (1, 5, "000000"), (5, 5, "000000"),
+        (1, 6, "000000"), (5, 6, "000000"),
+        (1, 7, "000000"), (5, 7, "000000"),
+        (1, 8, "000000"), (5, 8, "000000"),
+        (1, 9, "000000"), (5, 9, "000000"),
+        (1, 10, "000000"), (5, 10, "000000")
     ]
 
     # Fill the cells based on the pixel data
@@ -72,7 +78,12 @@ def generate_pixel_art():
         fill_pixel(sheet, x, y, color)
 
     # Save the workbook to a file
-    wb.save("rose_pixel_art.xlsx")
+    wb.save("rose_pixel_art_shifted.xlsx")
 
 # Run the function to generate the rose pixel art
 generate_pixel_art()
+
+
+
+
+
